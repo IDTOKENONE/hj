@@ -24,7 +24,8 @@
         "@schematics/angular:interceptor": {
           "skipTests": true
         },
-        "@schematics/angular:module": {},
+        "@schematics/angular:module": {
+        },
         "@schematics/angular:pipe": {
           "skipTests": true
         },
@@ -62,15 +63,9 @@
               "node_modules/animate.css/animate.css",
               "src/styles.scss"
             ],
-            "stylePreprocessorOptions": {
-              "includePaths": [
-                "node_modules/"
-              ]
-            },
             "scripts": [
               "node_modules/chart.js/dist/chart.js",
-              "node_modules/hammerjs/hammer.min.js",
-              "node_modules/chart.js/dist/chart.js"
+              "node_modules/hammerjs/hammer.min.js"
             ],
             "allowedCommonJsDependencies": [
               "@terra-dev/web-extension",
@@ -95,6 +90,7 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
+              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -116,6 +112,7 @@
               "optimization": false,
               "outputHashing": "all",
               "sourceMap": true,
+              "extractCss": true,
               "namedChunks": true,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -172,6 +169,19 @@
               "src/styles.scss"
             ],
             "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "tsconfig.app.json",
+              "tsconfig.spec.json",
+              "e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         },
         "e2e": {
